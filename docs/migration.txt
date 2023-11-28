@@ -1,0 +1,55 @@
+# migration
+# ------------------------------------------
+# はじめにやること、マイグレーションとスーパーユーザーの作成。
+# ------------------------------------------
+# python3 -m venv venv
+# pip install -r requirements.txt
+#
+# setting
+# PYTHONUNBUFFERED=1;DJANGO_SETTINGS_MODULE=drf_jwt_djoser.settings
+#
+# はじめに、DBとの接続を実施する。
+#
+# python manage.py makemigrations
+# python manage.py migrate
+# python manage.py createsuperuser
+#
+# python -m pip install django-debug-toolbar # デバッグツールのインストール
+# pip install django-cors-headers # CORSのインストール
+#
+# # run server
+# python manage.py runserver localhost:8000
+#
+# # ------------------------------------------
+# # テストの実施方法
+# # ------------------------------------------
+# # run test
+# python manage.py test
+#
+# # ------------------------------------------
+# # テスト・データの作成方法
+# # ------------------------------------------
+# # テスト・データの作成方法 For Todo Task
+# # Fixture
+# python manage.py loaddata api/init_data/custom_users.json
+# python manage.py loaddata api/init_data/profiles.json
+# python manage.py loaddata todo_task/fixtures/initial_data.json
+
+#
+# # ------------------------------------------
+# # ライブラリーの一括インストール方法。
+# # ------------------------------------------
+# # requests.txt 一括インストール。
+# $ pip install -r requirements.txt
+# # パッケージをインストールしたら、requirements.txtを更新する。
+
+# # ------------------------------------------
+# # アプリの登録、作成方法(例)
+# # ------------------------------------------
+# $ python manage.py startapp command_batch
+#
+# $ python manage.py startapp sns_app
+# $ python manage.py startapp api
+# $ python manage.py startapp api_v1
+# $ python manage.py startapp api_v2 etc......
+# # ------------------------------------------

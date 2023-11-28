@@ -1,0 +1,69 @@
+Django JWT(json web token)認証 + Djoser(メール対応)
+
+#### API                     URL
+- 1. アカウント仮登録          http://localhost:8000/api/auth/users/
+                             - Header: key->Content-Type、value->application/json
+                             - Body:   key->name、value->ユーザー名
+                                       key->email、value->メールアドレス
+                                       key->password、value->パスワード
+                                       key->re_password、value->パスワード(確認)
+- 2. アカウント本登録          メールのURL: uid, token
+- 3. アカウント本登録再送信     http://localhost:8000/api/auth/users/resend_activation/
+- ------------------------------------------------------------------------------------
+- 4. ログイン                 http://localhost:8000/api/auth/jwt/create/
+- 5. リフレッシュトークン       http://localhost:8000/api/auth/jwt/refresh/
+- 6. 認証チェック              http://localhost:8000/api/auth/jwt/verify/
+- ------------------------------------------------------------------------------------
+- 7. ユーザー情報取得           http://localhost:8000/api/auth/users/me/
+- 8. ユーザー情報変更           http://localhost:8000/api/auth/users/me/
+- 9. ユーザーリスト取得         http://localhost:8000/api/users/
+- ------------------------------------------------------------------------------------
+- 10. メールアドレス変更        http://localhost:8000/api/auth/users/reset_email/
+- 11. メールアドレス変更確認    http://localhost:8000/api/auth/users/reset_email_confirm/
+- ------------------------------------------------------------------------------------
+- 12. パスワード変更           http://localhost:8000/api/auth/users/set_password/
+- 13. パスワードリセット       http://localhost:8000/api/auth/users/reset_password/
+- 14. パスワードリセット確認    http://localhost:8000/api/auth/users/reset_password_confirm/
+- 15. アカウント削除           http://localhost:8000/api/auth/users/me/
+                            Headers: key->Authorization、value->JWT token
+                            Content-Type->application/json
+                            Body: key->current_password、value->現在のパスワードを入力
+- 16. アカウント削除確認        http://localhost:8000/api/auth/users/me/
+
+
+
+(1) 仮登録
+http://127.0.0.1:8000/api/auth/users/
+POST /api/auth/users/
+
+url = "http://127.0.0.1:8000/api/auth/users/"
+
+payload = {'name': 'user01',
+'email': 'user01@email.com',
+'password': 'tn1021tn1021',
+'re_password': 'tn1021tn1021'}
+files=[
+
+]
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
+
+（２）本登録：
+http://127.0.0.1:8000/api/auth/users/activation/
+uid = NA
+token =http://127.0.0.1:8000/ btnm0z-ff10e1df3cd8580b6494b3bfe4253a68
+
+payload = 'uid=NA&token=btnm0z-ff10e1df3cd8580b6494b3bfe4253a68'
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+}
+
+(3) アカウント本登録再送信:
+http://127.0.0.1:8000/api/auth/users/resend_activation/
+
+

@@ -1,0 +1,16 @@
+{% extends 'todo_task/base.html' %}
+
+{% block content %}
+    <h2>Task INDEX View</h2>
+    <p>Message: </p>
+    {% if user.is_authenticated %}
+        <p>
+            Welcome: {{ user }}<br/>
+            <a href="{% url 'todo_task:logout' %}">Logout</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="{% url 'todo_task:login' %}">Login</a>
+        </p>
+    {% endif %}
+{% endblock content %}
